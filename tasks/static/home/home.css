@@ -1,0 +1,8 @@
+body{
+    background: rgb(2,1,18);
+background: linear-gradient(90deg, rgba(2,1,18,1) 0%, rgba(22,55,61,1) 100%);
+}
+section {
+    background: rgb(2,1,18);
+    background: linear-gradient(90deg, rgba(2,1,18,1) 0%, rgba(31,119,136,1) 100%);
+}

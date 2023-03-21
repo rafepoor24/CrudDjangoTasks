@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base/base.html' %}
+    {% block content %}
+    <main class="container">
+       <div class="row">
+           <div class="col-12  ">
+               <h1 class="text-center text-light mt-5">Tasks Pending</h1>
+               
+               <ul class="list-group mt-5" >
+                   {% for task in tasks %}
+                   
+
+                   <a class="list-group-item" href="{% url 'taskDetail' task.id %}">
+         <header class="d-flex justify-content-between">
+     
+     
+             {% if task.important %}
+             <h1 class="fw-bold text-success">
+                 {{ task.title}}
+             </h1>
+            
+             {% else %}
+             
+                 <h1 class="fw-bold">
+         
+                     {{ task.title}}
+                 </h1>
+             
+                 {% endif %}    
+                 <p>
+                     {{task.user.username}}
+                 </p>
+         </header>
+        <div class="d-flex justify-content-between mt-4">
+         <p>
+             {{task.description}}
+         </p>
+         <p>
+             {{task.datecompleted|date:'M D Y:i'}}
+         </p>
+         <div>
+             <form  action="{% url 'delete' task.id %}" method="POST" class="card card-body">
+                 {% csrf_token %}
+                 <button class="btn btn-danger" >Delete</button>
+               
+             </form>
+         </div>
+        </div>
+         
+         
+    </a>
+     
+     
+         {% endfor %} 
+     </ul>
+</div>
+</div>
+
+</main>
+
+
+    {% endblock %}
+    
+</body>
+</html>
